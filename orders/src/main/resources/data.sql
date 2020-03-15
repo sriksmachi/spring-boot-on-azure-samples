@@ -1,0 +1,1 @@
+insert into orders(user_id, address, phone, order_date) values(1, 'microsoft, gachibowli', '12656745', '15/3/2020');
