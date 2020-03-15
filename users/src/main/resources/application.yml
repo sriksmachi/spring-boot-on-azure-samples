@@ -1,0 +1,22 @@
+server:
+  port: 80
+spring:
+  application:
+    name: usersservice
+  datasource:
+    url: jdbc:sqlserver://msreadyasctranssql1.database.windows.net:1433;database=usersdb;user=translationsuser@msreadyasctranssql1;password=Password@123;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+azure:
+  application-insights:
+    instrumentation-key: e2ce828f-ac8f-4539-8a53-9952e9378912
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      elastic:
+        host: http://localhost:9200
+        auto-create-index: false
