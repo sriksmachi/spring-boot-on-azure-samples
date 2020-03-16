@@ -1,18 +1,12 @@
-package com.example.springsamples.orders;
+package com.example.springsamples.users;
 
-import javax.persistence.*;
+public class UserOrdersModel {
 
-@Entity
-@Table(name = "orders")
-public class OrderModel {
+    private String user_id;
 
-    public String getId() {
-        return id;
-    }
+    private String id;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    private  String address;
 
     public String getUser_id() {
         return user_id;
@@ -20,6 +14,14 @@ public class OrderModel {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getAddress() {
@@ -46,20 +48,7 @@ public class OrderModel {
         this.order_date = order_date;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_id")
-    public String id;
+    private  String phone;
 
-    @Column(name = "user_id")
-    public String user_id;
-
-    @Column(name = "address")
-    public String address;
-
-    @Column(name = "phone")
-    public String phone;
-
-    @Column(name = "order_date")
-    public String order_date;
+    private  String order_date;
 }

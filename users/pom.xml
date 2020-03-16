@@ -49,7 +49,12 @@
       <groupId>com.microsoft.azure</groupId>  
       <artifactId>applicationinsights-web</artifactId>  
       <version>2.5.1</version> 
-    </dependency>  
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <version>2.2.1.RELEASE</version>
+    </dependency>
     <dependency> 
       <groupId>org.springframework.boot</groupId>  
       <artifactId>spring-boot-starter-test</artifactId>  
@@ -60,8 +65,13 @@
           <artifactId>junit-vintage-engine</artifactId> 
         </exclusion> 
       </exclusions> 
-    </dependency> 
-  </dependencies>  
+    </dependency>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>applicationinsights-logging-log4j2</artifactId>
+        <version>2.5.1</version>
+      </dependency>
+  </dependencies>
   <build> 
     <plugins>
       <plugin> 
@@ -78,9 +88,8 @@
           <appName>springbootsample-users</appName>
           <appServicePlanResourceGroup>cloud-shell-storage-westeurope</appServicePlanResourceGroup>
           <appServicePlanName>appsp-users-200314223504</appServicePlanName>
-          <pricingTier>F1</pricingTier>
+          <pricingTier>B1</pricingTier>
           <region>westeurope</region>
-          <deploymentType></deploymentType>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
@@ -89,7 +98,7 @@
           <appSettings>
             <property>
               <name>JAVA_OPTS</name>
-              <value>-Dserver.port=80</value>
+              <value>-javaagent:/local/site/wwwroot/applicationInsights/applicationinsights-agent-2.5.1.jar</value>
             </property>
           </appSettings>
           <deployment>

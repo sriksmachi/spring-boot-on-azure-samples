@@ -75,12 +75,11 @@
         <configuration>
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>microservices-workbench</resourceGroup>
-          <appName>springbootsample-users</appName>
+          <appName>springbootsample-orders</appName>
           <appServicePlanResourceGroup>cloud-shell-storage-westeurope</appServicePlanResourceGroup>
           <appServicePlanName>appsp-users-200314223504</appServicePlanName>
-          <pricingTier>F1</pricingTier>
+          <pricingTier>B1</pricingTier>
           <region>westeurope</region>
-          <deploymentType></deploymentType>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
@@ -89,7 +88,7 @@
           <appSettings>
             <property>
               <name>JAVA_OPTS</name>
-              <value>-Dserver.port=80</value>
+              <value>-javaagent:/local/site/wwwroot/applicationInsights/applicationinsights-agent-2.5.1.jar</value>
             </property>
           </appSettings>
           <deployment>

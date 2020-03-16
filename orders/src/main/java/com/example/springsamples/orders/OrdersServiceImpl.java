@@ -16,6 +16,6 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public Optional<List<OrderModel>> findByUserId(long user_id) {
-        return ordersRepository.findByUserId(user_id);
+        return Optional.of(ordersRepository.findAll());
     }
 }
