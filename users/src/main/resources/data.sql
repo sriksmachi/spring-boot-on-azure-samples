@@ -1,1 +1,1 @@
-insert into users(firstname, lastname, email) values('srikanth', 'machiraju', 'vism@microsoft.com');
+insert into users(firstname, lastname, email, alias) values('srikanth', 'machiraju', 'vism@microsoft.com', 'demo');

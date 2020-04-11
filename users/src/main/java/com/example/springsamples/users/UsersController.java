@@ -38,6 +38,7 @@ public class UsersController {
     {
         Optional<List<UserModel>> users;
         users =  Optional.of(this.usersService.getAllUsers());
+
         logger.debug("Received users: " + users.get().size() + "from database");
         return new ResponseEntity<List<UserModel>>(users.orElseGet(() -> null), HttpStatus.OK);
     }

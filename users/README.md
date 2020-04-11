@@ -9,6 +9,8 @@ GET users from Azure SQL, this samples is created to demonstrate the following.
    - Dependency  
         - JDBC queries for SQL Azure
         - Outbound HTTP Calls 
-
 <br/>
 
+## Deploy
+To deploy run the following command
+`mvn azure-webapp:deploy`

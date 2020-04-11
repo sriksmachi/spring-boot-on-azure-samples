@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="_DILBQEMYEeWdIOY0iB7t3w" targetNamespace="http://camunda.org/schema/1.0/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="example" name="example" isExecutable="true">
+    <bpmn2:startEvent id="StartEvent_1">
+      <bpmn2:outgoing>SequenceFlow_1f9zsc0</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="EndEvent_1">
+      <bpmn2:incoming>SequenceFlow_0kq0r7n</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" name="" sourceRef="ServiceTask_1" targetRef="placeorder" />
+    <bpmn2:sequenceFlow id="SequenceFlow_0kq0r7n" sourceRef="placeorder" targetRef="EndEvent_1" />
+    <bpmn2:userTask id="ServiceTask_1" name="select order" camunda:assignee="${assignee}">
+      <bpmn2:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="orderDescription" label="order" type="string" defaultValue="salad" />
+          <camunda:formField id="restaurant" label="restaurant" type="string" defaultValue="dominos" />
+          <camunda:formField id="address" label="address" type="string" />
+        </camunda:formData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1jbwmf6</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_1f9zsc0" sourceRef="StartEvent_1" targetRef="get_people" />
+    <bpmn2:sequenceFlow id="SequenceFlow_1jbwmf6" sourceRef="get_people" targetRef="ServiceTask_1" />
+    <bpmn2:serviceTask id="get_people" name="get list of people" camunda:delegateExpression="${getPeopleDelegate}">
+      <bpmn2:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="assigneeList">
+            <camunda:list />
+          </camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1f9zsc0</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1jbwmf6</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:serviceTask id="placeorder" name="place order" camunda:delegateExpression="${placeOrderDelegate}">
+      <bpmn2:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="order" />
+        </camunda:inputOutput>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_0kq0r7n</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:textAnnotation id="TextAnnotation_1e18vi0">
+      <bpmn2:text>Lunch Time</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="Association_166p0mp" sourceRef="StartEvent_1" targetRef="TextAnnotation_1e18vi0" />
+    <bpmn2:textAnnotation id="TextAnnotation_1pcm45c">
+      <bpmn2:text>Order Placed</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="Association_1ntf4rv" sourceRef="EndEvent_1" targetRef="TextAnnotation_1pcm45c" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="example">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="208" y="106" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="66" y="137" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_EndEvent_2" bpmnElement="EndEvent_1">
+        <dc:Bounds x="822" y="106" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="UserTask_0s8in58_di" targetElement="ServiceTask_1wktat4_di">
+        <di:waypoint x="560" y="124" />
+        <di:waypoint x="640" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kq0r7n_di" bpmnElement="SequenceFlow_0kq0r7n">
+        <di:waypoint x="740" y="124" />
+        <di:waypoint x="822" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0s8in58_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="460" y="84" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1f9zsc0_di" bpmnElement="SequenceFlow_1f9zsc0">
+        <di:waypoint x="244" y="124" />
+        <di:waypoint x="310" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jbwmf6_di" bpmnElement="SequenceFlow_1jbwmf6">
+        <di:waypoint x="410" y="124" />
+        <di:waypoint x="460" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1e18vi0_di" bpmnElement="TextAnnotation_1e18vi0">
+        <dc:Bounds x="160" y="170" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_166p0mp_di" bpmnElement="Association_166p0mp">
+        <di:waypoint x="221" y="141" />
+        <di:waypoint x="214" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_114itpr_di" bpmnElement="get_people">
+        <dc:Bounds x="310" y="84" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1pcm45c_di" bpmnElement="TextAnnotation_1pcm45c">
+        <dc:Bounds x="800" y="190" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1ntf4rv_di" bpmnElement="Association_1ntf4rv">
+        <di:waypoint x="842" y="142" />
+        <di:waypoint x="848" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1wktat4_di" bpmnElement="placeorder">
+        <dc:Bounds x="640" y="84" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

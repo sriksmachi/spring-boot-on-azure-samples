@@ -40,6 +40,14 @@ public class UserModel {
         this.email = email;
     }
 
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
@@ -49,8 +57,11 @@ public class UserModel {
     private String firstName;
 
     @Column(name = "lastname")
-    private  String lastName;
+    private String lastName;
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "alias")
+    private String alias;
 }

@@ -18,4 +18,10 @@ public class OrdersServiceImpl implements OrdersService {
     public Optional<List<OrderModel>> findByUserId(long user_id) {
         return Optional.of(ordersRepository.findAll());
     }
+
+    @Override
+    public String createOrder(OrderModel order) {
+        OrderModel orderModel = ordersRepository.save(order);
+        return orderModel.id;
+    }
 }

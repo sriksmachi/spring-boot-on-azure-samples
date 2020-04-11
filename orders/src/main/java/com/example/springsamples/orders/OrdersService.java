@@ -8,4 +8,5 @@ import java.util.Optional;
 @Service
 public interface OrdersService {
     Optional<List<OrderModel>> findByUserId(long user_id);
+    String createOrder(OrderModel order);
 }

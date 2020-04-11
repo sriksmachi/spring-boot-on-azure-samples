@@ -1,5 +1,13 @@
-spring.datasource.url: jdbc:h2:file:./camunda-h2-database
-
-camunda.bpm.admin-user:
-  id: demo
-  password: demo
+spring:
+  datasource:
+    url: jdbc:sqlserver://msreadyasctranssql1.database.windows.net:1433;database=camundadatabase;user=translationsuser@msreadyasctranssql1;password=Password@123;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+camunda:
+  bpm:
+    database.type: mssql
+    admin-user:
+      id: demo
+      password: demo
+azure:
+  application-insights:
+    instrumentation-key: e2ce828f-ac8f-4539-8a53-9952e9378912
